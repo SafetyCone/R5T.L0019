@@ -1,0 +1,2 @@
+# R5T.L0019
+Newtonsoft.JSON Nuget package selector.
