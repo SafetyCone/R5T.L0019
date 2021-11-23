@@ -1,3 +1,0 @@
-R5T.L0019.Construction - Construction project for Newtonsoft.JSON Nuget package selector..
-
-GOALS:
