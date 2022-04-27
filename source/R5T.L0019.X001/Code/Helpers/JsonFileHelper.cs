@@ -17,6 +17,28 @@ namespace Newtonsoft.Json
             return output;
         }
 
+        /// <summary>
+        /// Loads from the given JSON file path, or calls the default constructor if the file does not exist.
+        /// </summary>
+        public static T LoadFromFileOrDefault<T>(
+            string jsonFilePath,
+            Func<T> defaultConstructor)
+        {
+            var fileExists = File.Exists(jsonFilePath);
+            if(fileExists)
+            {
+                var output = JsonFileHelper.LoadFromFile<T>(jsonFilePath);
+                if (output is object)
+                {
+                    return output;
+                }
+            }
+
+            // Else, default;
+            var @default = defaultConstructor();
+            return @default;
+        }
+
         public static async Task<T> LoadFromFile<T>(string jsonFilePath, string keyName)
         {
             var jObject = await JsonHelper.LoadAsJObject(jsonFilePath);
